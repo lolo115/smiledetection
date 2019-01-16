@@ -3,7 +3,7 @@
 import os
 import cx_Oracle
 
-oh="D:/tools/Oracle/instantclient_12_2_x8664"
+oh="/Users/leturgezl/Applications/instantclient_12_2"
 os.environ["ORACLE_HOME"]=oh
 os.environ["PATH"]=oh+os.pathsep+os.environ["PATH"]
 os.environ["NLS_LANG"]="AMERICAN_AMERICA.AL32UTF8"
@@ -35,14 +35,14 @@ def insertFile(conn, status, data_file ):
 
 # main
 if __name__ == '__main__':
-    root_dir = 'D:/JetBrains_projects/PycharmProjects/work/'
+    root_dir = '/Users/leturgezl/PycharmProjects/work'
     os.chdir (root_dir)
 
     c = cx_Oracle.Connection
 # create table bin_file(status number, b blob);
 # alter table bin_file add constraint check_status check (status in (0,1));
     try:
-        c=connectToOracle("192.168.99.2:1521/orcl","laurent","laurent")
+        c=connectToOracle(url="192.168.99.3:1521/orcl",username="laurent",password="laurent")
         for file in [ pos for pos in os.listdir ('SMILEsmileD-master/SMILEs/negatives/negatives7/')
             if pos.endswith (".jpg") ]:
             f=open('SMILEsmileD-master/SMILEs/negatives/negatives7/'+file,'rb')
